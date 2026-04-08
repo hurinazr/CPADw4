@@ -324,6 +324,12 @@
 		addBtn.addEventListener("click", addNote);
 		clearAllBtn.addEventListener("click", clearAllNotes);
 
+		titleInput.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") {
+			 	addNote();
+			}
+		});
+
 		notesContainer.addEventListener("click", (e) => {
 		 	// find the closest ancestor (or self) that is a delete button
 		 	const btn = e.target.closest('[data-action="delete"]');
@@ -371,6 +377,11 @@
 		 	showUserAgent(); // BOM: show user agent
 		 	addBtn.addEventListener("click", addNote);
 		 	clearAllBtn.addEventListener("click", clearAllNotes);
+		 	titleInput.addEventListener("keydown", (e) => {
+ 				if (e.key === "Enter") {
+ 					addNote();
+ 				}
+			});
 		}
 		
 		init(); // ← call init when the page loads
