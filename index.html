@@ -270,7 +270,7 @@
 		 	const index = notes.findIndex(n => n.id === id);
 		 	if (index !== -1) {
 		 		notes.splice(index, 1);
-		 	renderNotes();
+		 		renderNotes();
 		 	}
 		}
 
@@ -293,6 +293,15 @@
 
 		addBtn.addEventListener("click", addNote);
 		clearAllBtn.addEventListener("click", clearAllNotes);
+
+		notesContainer.addEventListener("click", (e) => {
+		 	// find the closest ancestor (or self) that is a delete button
+		 	const btn = e.target.closest('[data-action="delete"]');
+		 	if (btn) {
+		 		const id = parseInt(btn.getAttribute("data-id"), 10);
+		 		deleteNoteById(id);
+		 	}
+		});
 
 	</script>
 	
